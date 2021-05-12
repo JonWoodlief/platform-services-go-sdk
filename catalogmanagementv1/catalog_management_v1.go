@@ -6681,6 +6681,9 @@ type CreateOfferingInstanceOptions struct {
 	// designate to install into all namespaces.
 	ClusterAllNamespaces *bool
 
+	// Id of the schematics workspace, for offering instances provisioned through schematics
+	SchematicsWorkspaceID *string
+
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -6770,6 +6773,11 @@ func (options *CreateOfferingInstanceOptions) SetClusterAllNamespaces(clusterAll
 	return options
 }
 
+// SetSchematicsWorkspaceID : Allow user to set SchematicsWorkspaceID
+func (options *CreateOfferingInstanceOptions) SetSchematicsWorkspaceID(SchematicsWorkspaceID string) *CreateOfferingInstanceOptions {
+	options.SchematicsWorkspaceID = core.StringPtr(SchematicsWorkspaceID)
+	return options
+}
 // SetHeaders : Allow user to set Headers
 func (options *CreateOfferingInstanceOptions) SetHeaders(param map[string]string) *CreateOfferingInstanceOptions {
 	options.Headers = param
