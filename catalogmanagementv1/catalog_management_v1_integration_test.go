@@ -782,7 +782,7 @@ var _ = Describe(`CatalogManagementV1 Integration Tests (New)`, func() {
 				expectedOfferingKinds      = 1
 				expectedOfferingShortDesc  = "Node-RED is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways."
 				expectedOfferingURL        = "https://cm.globalcatalog.test.cloud.ibm.com/api/v1-beta/catalogs/%s/offerings/%s"
-				expectedOfferingZipURL     = "https://github.com/rhm-samples/node-red-operator/blob/nodered-1.2.8/node-red-operator/bundle/0.0.2/manifests/node-red-operator.v0.0.2.clusterserviceversion.yaml"
+				expectedOfferingZipURL     = "https://github.com/rhm-samples/node-red-operator/blob/master/node-red-operator/bundle/0.0.2/node-red-operator.v0.0.2.clusterserviceversion.yaml"
 			)
 			offeringOptions := catalogManagementService.NewImportOfferingOptions(testCatalogID)
 			offeringOptions.SetZipurl(expectedOfferingZipURL)
