@@ -59,6 +59,7 @@ var _ = Describe(`CatalogManagementV1 Integration Tests (New)`, func() {
 		gitToken                 string
 		refreshToken             string
 		testOfferingInstanceID   string
+		testOfferingInstanceRev  string
 		targetAccountID          string
 		targetClusterID          string
 	)
@@ -2087,6 +2088,7 @@ var _ = Describe(`CatalogManagementV1 Integration Tests (New)`, func() {
 			offeringInstanceOptions.SetClusterID(targetClusterID)
 			offeringInstanceOptions.SetClusterRegion("us-south")
 			offeringInstanceOptions.SetClusterNamespaces([]string{"sdk-test"})
+			offeringInstanceOptions.SetSchematicsWorkspaceID("test-id")
 
 			offeringInstance, response, err := catalogManagementService.CreateOfferingInstance(offeringInstanceOptions)
 
@@ -2097,6 +2099,7 @@ var _ = Describe(`CatalogManagementV1 Integration Tests (New)`, func() {
 
 			Expect(offeringInstance.ID).ToNot(BeNil())
 			testOfferingInstanceID = *offeringInstance.ID
+			testOfferingInstanceRev = *offeringInstance.Rev
 			Expect(testOfferingInstanceID).ToNot(BeEmpty())
 		})
 	})
@@ -2128,6 +2131,7 @@ var _ = Describe(`CatalogManagementV1 Integration Tests (New)`, func() {
 			Expect(testOfferingInstanceID).ToNot(BeEmpty())
 
 			putOfferingInstanceOptions := catalogManagementService.NewPutOfferingInstanceOptions(testOfferingInstanceID, refreshToken)
+			putOfferingInstanceOptions.SetRev(testOfferingInstanceRev)
 			putOfferingInstanceOptions.SetCatalogID(testCatalogID)
 			putOfferingInstanceOptions.SetOfferingID(testOfferingID)
 			putOfferingInstanceOptions.SetKindFormat("operator")
@@ -2157,7 +2161,7 @@ var _ = Describe(`CatalogManagementV1 Integration Tests (New)`, func() {
 			response, err := catalogManagementService.DeleteOfferingInstance(deleteOfferingInstanceOptions)
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
+			Expect(response.StatusCode).To(Equal(204))
 
 		})
 	})
