@@ -6791,6 +6791,12 @@ func (options *CreateOfferingInstanceOptions) SetSchematicsWorkspaceID(Schematic
 	return options
 }
 
+// SetResourceGroupID : Allow user to set SchematicsWorkspaceID
+func (options *CreateOfferingInstanceOptions) SetResourceGroupID(ResourceGroupID string) *CreateOfferingInstanceOptions {
+	options.ResourceGroupID = core.StringPtr(ResourceGroupID)
+	return options
+}
+
 // SetHeaders : Allow user to set Headers
 func (options *CreateOfferingInstanceOptions) SetHeaders(param map[string]string) *CreateOfferingInstanceOptions {
 	options.Headers = param
